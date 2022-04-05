@@ -6,11 +6,28 @@
         {{movie.Title}}
       </mat-card-title>
       <mat-card-subtitle>
-        Directed by: {{movie.Director.Name}}
+        Directed by: {{movie.Director.Name}}<br>
+        ({{movie.ReleaseYear}})
       </mat-card-subtitle>
+      <button mat-icon-button>
+        <mat-icon>favorite_border</mat-icon>
+      </button>
     </mat-card-header>
-    <img src="{{movie.ImagePath}}" alt={{movie.Title}} />
+    <img
+    src="{{movie.ImagePath}}"
+    alt={{movie.Title}}
+    style="width: 300px;"
+  />
+    <mat-card-content>
+
+    </mat-card-content>
     <mat-card-actions>
+      <button
+        mat-button
+        color="primary"
+      >
+        Director
+      </button>
       <button
         mat-button
         color="primary"
@@ -21,9 +38,8 @@
         mat-button
         color="primary"
       >
-        Description
+        Synopsis
       </button>
-      <mat-icon>favorite_border</mat-icon>
     </mat-card-actions>
   </mat-card>
 </div>
