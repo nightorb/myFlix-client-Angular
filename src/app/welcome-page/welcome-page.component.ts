@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 // import components
@@ -14,7 +15,9 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 export class WelcomePageComponent implements OnInit {
 
   // pass Angular Material dialog in the constructor as an argument to make it available for use in the component
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -34,9 +37,7 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-  openMoviesDialog(): void {
-    this.dialog.open(MovieCardComponent, {
-      width: '500px'
-    });
+  openMoviesList(): void {
+    this.router.navigate(['movies']);
   }
 }
