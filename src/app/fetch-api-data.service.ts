@@ -8,7 +8,7 @@ const apiUrl = 'https://nightorbs-myflix.herokuapp.com/';
 // get token from local storage for authenticated requests
 const token = localStorage.getItem('token');
 // get username from local storage for URLs
-const username = localStorage.getItem('username');
+const username = localStorage.getItem('user');
 
 // the @Injectible decorator tells Angular that this service is available everywhere (hence the root)
 @Injectable({
@@ -180,7 +180,7 @@ export class FetchApiDataService {
 
   // add a movie to a user's list of favorites
   addFavoriteMovie(id: string): Observable<any> {
-    return this.http.post(apiUrl + `users/${username}/favorites/${id}`, {
+    return this.http.post(apiUrl + `users/${username}/favorites/${id}`, null, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + token
       })
