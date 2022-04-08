@@ -3,6 +3,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 
 // import Materials
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 // used to navigate back to welcome page on successful deregistration
 import { Router } from '@angular/router';
@@ -19,10 +20,10 @@ export class UserProfileComponent implements OnInit {
   favoriteMovies: any[] = [] || null;
 
   @Input() userData = {
-    Username: '',
-    Password: '',
-    Email: '',
-    Birthday: ''
+    Username: this.user.Username,
+    Password: this.user.Password,
+    Email: this.user.Email,
+    Birthday: this.user.Birthday
   }
 
   constructor(
@@ -32,6 +33,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    console.log(this.userData);
   }
 
   // API call to get user information
@@ -44,20 +46,19 @@ export class UserProfileComponent implements OnInit {
         return this.user;
       });
     }
-
   }
 
   updateUserInfo(): void {
     this.fetchApiData.updateUserInfo(this.userData).subscribe((response) => {
       // save new username to local storage
-      localStorage.setItem('user', response.user.Username);
+      localStorage.setItem('user', response.Username);
       console.log(response);
       this.snackBar.open('profile updated successfully', 'OK', {
         duration: 2000
       });
       setTimeout(() => {
         window.location.reload();
-      });
+      }, 3000);
     });
   }
 
