@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div style="display: flex;">
   <!-- *ngFor directive used to display returned movies where each movie is displayed in its own card -->
   <mat-card *ngFor="let movie of movies; let i=index;">
@@ -6,18 +7,22 @@
         {{movie.Title}}
       </mat-card-title>
       <mat-card-subtitle>
-        Directed by: {{movie.Director.Name}}<br>
-        ({{movie.ReleaseYear}})
+        {{movie.ReleaseYear}}<br>
+        Directed by: {{movie.Director.Name}}
       </mat-card-subtitle>
-      <button mat-icon-button>
-        <mat-icon>favorite_border</mat-icon>
+      <button
+        mat-icon-button
+        (click)="toggleFavorite(movie)"
+      >
+        <mat-icon *ngIf="!isFavorited(movie._id)">favorite_border</mat-icon>
+        <mat-icon *ngIf="isFavorited(movie._id)">favorite</mat-icon>
       </button>
     </mat-card-header>
     <img
-    src="{{movie.ImagePath}}"
-    alt={{movie.Title}}
-    style="width: 300px;"
-  />
+      src="{{movie.ImagePath}}"
+      alt={{movie.Title}}
+      style="width: 300px;"
+    />
     <mat-card-content>
 
     </mat-card-content>
@@ -25,18 +30,30 @@
       <button
         mat-button
         color="primary"
+        (click)="openDirectorDialog(
+          movie.Title,
+          movie.Director.Name,
+          movie.Director.Bio,
+          movie.Director.BirthYear)"
       >
         Director
       </button>
       <button
         mat-button
         color="primary"
+        (click)="openGenreDialog(
+          movie.Title,
+          movie.Genre.Name,
+          movie.Genre.Description)"
       >
         Genre
       </button>
       <button
         mat-button
         color="primary"
+        (click)="openSynopsisDialog(
+          movie.Title,
+          movie.Description)"
       >
         Synopsis
       </button>
