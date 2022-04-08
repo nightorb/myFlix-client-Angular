@@ -32,7 +32,6 @@ export class MovieCardComponent implements OnInit {
     // fetch movies from FetchApiDataService with getAllMovies()
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.movies = res;
-      console.log(this.movies);
       return this.movies;
     });
   }
@@ -71,7 +70,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   getFavoriteMovies(): void {
-    this.fetchApiData.getFavoriteMovies().subscribe((res: any) => {
+    this.fetchApiData.getUser().subscribe((res: any) => {
       this.favoriteMovies = res.FavoriteMovies;
     });
   }
