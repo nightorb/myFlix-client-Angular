@@ -8,6 +8,10 @@ import { MatDialog } from '@angular/material/dialog';
 // used to navigate back to welcome page on successful deregistration
 import { Router } from '@angular/router';
 
+import { DirectorCardComponent } from '../director-card/director-card.component';
+import { GenreCardComponent } from '../genre-card/genre-card.component';
+import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -16,8 +20,7 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   username = localStorage.getItem('user');
   user: any = {};
-  movies: any[] = [];
-  favoriteMovies: any[] = [] || null;
+  favoriteMovies: any[] = [];
 
   @Input() userData = {
     Username: this.user.Username,
@@ -29,20 +32,20 @@ export class UserProfileComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
+    public dialog: MatDialog,
     public router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
-    console.log(this.userData);
+    this.getFavoriteMovies();
   }
 
   // API call to get user information
   getUser(): void {
-    const user = localStorage.getItem('user');
-    if (user) {
+    const username = localStorage.getItem('user');
+    if (username) {
       this.fetchApiData.getUser().subscribe((res: any) => {
         this.user = res;
-        console.log(this.user);
         return this.user;
       });
     }
@@ -77,13 +80,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   getFavoriteMovies(): void {
-    this.fetchApiData.getFavoriteMovies().subscribe((res: any[]) => {
-      this.movies = res;
-      this.movies.forEach((movie: any) => {
-        if (this.user.FavoriteMovies.includes(movie._id)) {
-          this.favoriteMovies.push(movie);
-        }
-      });
+    this.fetchApiData.getFavoriteMovies().subscribe((res: any) => {
+      this.favoriteMovies = res.FavoriteMovies;
+      return this.favoriteMovies;
     });
   }
 
@@ -92,6 +91,40 @@ export class UserProfileComponent implements OnInit {
       this.snackBar.open(`removed ${Title} from your favorites`, 'OK', {
         duration: 2000
       });
+      window.location.reload();
+    });
+  }
+
+  openDirectorDialog(title: string, name: string, bio: string, birth: string): void {
+    this.dialog.open(DirectorCardComponent, {
+      data: {
+        Title: title,
+        Name: name,
+        Bio: bio,
+        BirthYear: birth
+      },
+      width: '500px'
+    });
+  }
+
+  openGenreDialog(title: string, name: string, description: string): void {
+    this.dialog.open(GenreCardComponent, {
+      data: {
+        Title: title,
+        Name: name,
+        Description: description
+      },
+      width: '500px'
+    });
+  }
+
+  openSynopsisDialog(title: string, description: string): void {
+    this.dialog.open(SynopsisCardComponent, {
+      data: {
+        Title: title,
+        Description: description
+      },
+      width: '500px'
     });
   }
 
