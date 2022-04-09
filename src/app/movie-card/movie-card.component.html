@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<div style="display: flex;">
+<div class="movie-list">
   <!-- *ngFor directive used to display returned movies where each movie is displayed in its own card -->
-  <mat-card *ngFor="let movie of movies; let i=index;">
+  <mat-card *ngFor="let movie of movies; let i=index;" class="movie-card">
     <mat-card-header>
       <mat-card-title>
         {{movie.Title}}
