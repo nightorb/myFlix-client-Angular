@@ -15,6 +15,7 @@ import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component'
 export class MovieCardComponent implements OnInit {
   // data returned from the API call will be kept here
   movies: any[] = [];
+  user: any = {};
   favoriteMovies: any[] = [];
 
   constructor(
@@ -25,7 +26,7 @@ export class MovieCardComponent implements OnInit {
   // lifecycle hook; called when Angular is done creating the component
   ngOnInit(): void {
     this.getMovies();
-    this.getFavoriteMovies();
+    this.getUser();
   }
 
   getMovies(): void {
@@ -69,10 +70,15 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  getFavoriteMovies(): void {
-    this.fetchApiData.getUser().subscribe((res: any) => {
-      this.favoriteMovies = res.FavoriteMovies;
-    });
+  getUser(): void {
+    const username = localStorage.getItem('user');
+    if (username) {
+      this.fetchApiData.getUser().subscribe((res: any) => {
+        this.user = res;
+        this.favoriteMovies = res.FavoriteMovies
+        return this.user, this.favoriteMovies;
+      });
+    }
   }
 
   addFavoriteMovie(MovieID: string, Title: string): void {
@@ -82,7 +88,7 @@ export class MovieCardComponent implements OnInit {
       });
       this.ngOnInit();
     });
-    return this.getFavoriteMovies();
+    return this.getUser();
   }
 
   removeFavoriteMovie(MovieID: string, Title: string): void {
@@ -92,7 +98,7 @@ export class MovieCardComponent implements OnInit {
       });
       this.ngOnInit();
     });
-    return this.getFavoriteMovies();
+    return this.getUser();
   }
 
   // checks whether a movie is in the user's favorite list or not
