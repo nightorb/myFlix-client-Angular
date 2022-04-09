@@ -1,0 +1,9 @@
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .movie-card {
+    flex: 1 1 auto;
+    max-width: 300px;
+  }
+}
