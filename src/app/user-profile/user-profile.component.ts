@@ -15,7 +15,7 @@ import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component'
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss', '../movie-card/movie-card.component.scss']
 })
 export class UserProfileComponent implements OnInit {
   username = localStorage.getItem('user');
