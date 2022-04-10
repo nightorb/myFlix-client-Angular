@@ -1,9 +1,50 @@
+$xl-screen-size: 1740px;
+
+
+@mixin xl-screen {
+  @media only screen and (min-width: $xl-screen-size) {
+    @content
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @include xl-screen {
+    width: 80vw;
+    margin: 0 auto;
+  }
   .movie-card {
-    flex: 1 1 auto;
-    max-width: 300px;
+    width: 300px;
+    margin: 1.5rem;
+    padding-top: 1.5rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    .movie-card-title {
+      width: 215px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-bottom: 3px;
+      margin-bottom: 1.2rem;
+    }
+    .movie-card-image {
+      display: block;
+      width: 284px;
+      border-radius: 3px;
+      margin: 0 auto;
+    }
+    .movie-card-actions {
+      margin: 0;
+      padding: 0;
+      .movie-card-btns {
+        width: 100%;
+      }
+    }
   }
 }
