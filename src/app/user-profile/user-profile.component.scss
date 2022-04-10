@@ -1,0 +1,44 @@
+.profile-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // @include xl-screen {
+  //   width: 80vw;
+  //   margin: 0 auto;
+  // }
+}
+
+.profile-info {
+  width: 100%;
+  .user-info-card {
+    width: 500px;
+    margin: 1.5rem;
+    .user-info-card-title {
+      margin-bottom: 1.2rem;
+    }
+    .user-info-card-content {
+      margin-left: 16px;
+    }
+  }
+  .update-user-card {
+    width: 500px;
+    margin: 1.5rem;
+    .update-user-card-title {
+      margin-bottom: 1.2rem;
+    }
+    .update-user-card-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 16px;
+    }
+    .update-user-card-actions {
+      margin: 0;
+      margin-left: 16px;
+      padding: 0;
+    }
+  }
+}
+
+.favorites-list {
+  width: 100%;
+}
