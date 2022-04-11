@@ -1,0 +1,35 @@
+$sm-screen-size: 517px;
+
+
+@mixin sm-screen {
+  @media only screen and (min-width: $sm-screen-size) {
+    @content
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: darken(#df611c, 10%);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6);
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  color: #fff;
+  .navbar-nav {
+    @include sm-screen {
+      width: 50%;
+    }
+    > a {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 500;
+      margin-right: 4rem;
+      text-decoration: none;
+    }
+    > button {
+      font-size: 1.25rem;
+      padding: 0.5rem;
+      margin-right: 1.5rem;
+    }
+  }
+}

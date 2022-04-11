@@ -1,20 +1,18 @@
 <div class="navbar">
-  <button
-    mat-button
-    (click)="goToMovies()"
-  >
-    Movies
-  </button>
-  <button
-    mat-button
-    (click)="goToUserProfile()"
-  >
-    Profile
-  </button>
-  <button
-    mat-button
-    (click)="UserLogOut()"
-  >
-    Logout
-  </button>
+  <div class="navbar-nav">
+    <a href="movies">myFlix</a>
+    <button mat-button (click)="goToMovies()">Movies</button>
+    <button
+      mat-button
+      [matMenuTriggerFor]="profile"
+    >
+      Profile
+      <span class="material-icons">expand_more</span>
+    </button>
+    <mat-menu #profile="matMenu">
+      <button mat-menu-item (click)="goToUserProfile()">Profile</button>
+      <mat-divider style="border-top-width: 3px;"></mat-divider>
+      <button mat-menu-item (click)="UserLogOut()">Logout</button>
+    </mat-menu>
+  </div>
 </div>
