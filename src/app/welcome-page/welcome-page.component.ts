@@ -14,7 +14,9 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 export class WelcomePageComponent implements OnInit {
 
   // pass Angular Material dialog in the constructor as an argument to make it available for use in the component
-  constructor(public dialog: MatDialog, public router: Router) { }
+  constructor(
+    public dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.redirectToMovies();
