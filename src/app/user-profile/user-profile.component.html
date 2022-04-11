@@ -2,19 +2,30 @@
 
 <div class="profile-page">
   <div class="profile-info">
-    <h1>Your Profile</h1>
+    <h1 style="
+      width: calc(80vw + 2rem);
+      max-width: 1200px;"
+    >
+      Your Profile
+    </h1>
 
     <!-- section with user information -->
     <mat-card class="user-info-card">
       <mat-card-header>
         <mat-card-title class="user-info-card-title">
-          Your Info
+          <h2>Your Info</h2>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content class="user-info-card-content">
-        <p><b>Username: </b>{{this.user.Username}}</p>
-        <p><b>Email: </b>{{this.user.Email}}</p>
-        <p><b>Birthday: </b>{{this.user.Birthday}}</p>
+        <div style="margin-bottom: 1rem;">
+          <p>Username: <span id="value">{{this.user.Username}}</span></p>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <p>Email: <span id="value">{{this.user.Email}}</span></p>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <p>Birthday: <span id="value">{{this.user.Birthday | date}}</span></p>
+        </div>
       </mat-card-content>
     </mat-card>
 
@@ -22,7 +33,7 @@
     <mat-card class="update-user-card">
       <mat-card-header>
         <mat-card-title class="update-user-card-title">
-          Edit Profile
+          <h2>Edit Profile</h2>
         </mat-card-title>
       </mat-card-header>
 
@@ -69,7 +80,7 @@
 
       <mat-card-footer style="margin: 0;">
         <mat-card-actions class="update-user-card-actions">
-          <div>
+          <div style="margin-bottom: 16px;">
             <button
               mat-raised-button
               color="primary"
@@ -78,9 +89,17 @@
               Update
             </button>
           </div>
-          <div>
+          <mat-divider style="border-top-width: 3px;"></mat-divider>
+          <div style="
+            margin-top: 48px;
+            text-align: center;
+            color: #A6A6A6;">
+            <p>
+              Danger zone!<br>
+              Once you delete your account, there is no going back.
+            </p>
             <button
-              mat-button
+              mat-stroked-button
               color="accent"
               (click)="deleteUser()"
             >
@@ -94,13 +113,22 @@
 
   <!-- favorite movies section -->
   <div class="favorites-list">
-    <h1>Favorite Movies</h1>
-    <p *ngIf="(favoriteMovies.length === 0)">
+    <h1 style="
+      width: calc(80vw + 2rem);
+      max-width: 1200px;
+      margin-bottom: 3rem;"
+    >
+      Favorite Movies
+    </h1>
+    <p 
+      *ngIf="(favoriteMovies.length === 0)"
+      style="color: #fff; width: 100%; max-width: calc(80vw + 2rem);"
+    >
       You have no favorite movies yet.
     </p>
 
     <!-- movie card -->
-    <div class="movie-list">
+    <div class="movie-list" style="max-width: 1200px;">
       <mat-card *ngFor="let movie of favoriteMovies; let i = index" class="movie-card">
         <mat-card-header>
           <mat-card-title class="movie-card-title">
@@ -109,7 +137,7 @@
           <mat-card-subtitle>{{movie.ReleaseYear}}</mat-card-subtitle>
           <button
             mat-icon-button
-            color="primary"
+            color="accent"
             (click)="removeFavoriteMovie(movie._id, movie.Title)"
           >
             <mat-icon class="remove-favorite-btn">favorite</mat-icon>
