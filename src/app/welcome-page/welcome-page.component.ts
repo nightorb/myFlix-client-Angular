@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 // import components
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
@@ -13,23 +14,27 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 export class WelcomePageComponent implements OnInit {
 
   // pass Angular Material dialog in the constructor as an argument to make it available for use in the component
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public router: Router) { }
 
   ngOnInit(): void {
+    this.redirectToMovies();
   }
 
   // function that opens registration dialog when signup button is clicked
   openUserRegistrationDialog(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      // assign the dialog a width
-      width: '280px'
-    });
+    this.dialog.open(UserRegistrationFormComponent);
   }
 
   // function that opens login dialog when login button is clicked
   openUserLoginDialog(): void {
-    this.dialog.open(UserLoginFormComponent, {
-      width: '280px'
-    });
+    this.dialog.open(UserLoginFormComponent);
+  }
+
+  // if a user is already logged in (= user item in local storage), redirect to movies list instead
+  redirectToMovies(): void {
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.router.navigate(['movies']);
+    }
   }
 }
