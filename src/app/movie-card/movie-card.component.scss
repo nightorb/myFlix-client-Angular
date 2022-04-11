@@ -25,6 +25,7 @@ $xl-screen-size: 1740px;
     padding-top: 1.5rem;
     padding-left: 8px;
     padding-right: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
     .movie-card-title {
       width: 215px;
       white-space: nowrap;
@@ -38,6 +39,7 @@ $xl-screen-size: 1740px;
       width: 284px;
       border-radius: 3px;
       margin: 0 auto;
+      filter: brightness(0.85);
     }
     .movie-card-actions {
       margin: 0;
