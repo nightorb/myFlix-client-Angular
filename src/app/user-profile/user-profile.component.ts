@@ -38,6 +38,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getFavoriteMovies();
+    console.log(this.favoriteMovies)
   }
 
   // API call to get user information
@@ -46,6 +47,7 @@ export class UserProfileComponent implements OnInit {
     if (username) {
       this.fetchApiData.getUser().subscribe((res: any) => {
         this.user = res;
+        console.log(res)
         return this.user;
       });
     }
@@ -66,24 +68,27 @@ export class UserProfileComponent implements OnInit {
   }
 
   deleteUser(): void {
-    this.fetchApiData.deleteUser().subscribe(() => {
-      this.snackBar.open(`${this.user.Usermame} has been removed`, 'OK', {
-        duration: 2000
+    if (confirm('Are you sure? This cannot be undone.')) {
+      this.fetchApiData.deleteUser().subscribe(() => {
+        this.snackBar.open(`${this.user.Usermame} has been removed`, 'OK', {
+          duration: 2000
+        });
+        // delete everything from local storage
+        localStorage.clear();
       });
-      // delete everything from local storage
-      localStorage.clear();
-    });
-    setTimeout(() => {
       // navigate back to welcome screen after account has been deleted
       this.router.navigate(['welcome']);
-    }, 1000);
+    }
   }
 
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((res: any) => {
       this.favoriteMovies = res.FavoriteMovies;
+      console.log(res.FavoriteMovies);
+      console.log(this.favoriteMovies)
       return this.favoriteMovies;
     });
+    console.log(this.favoriteMovies)
   }
 
   removeFavoriteMovie(MovieID: string, Title: string): void {
