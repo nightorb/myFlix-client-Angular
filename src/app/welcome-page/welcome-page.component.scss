@@ -1,0 +1,23 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .main-page-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 250px;
+    width: 300px;
+    .main-page-card-title {
+      font-size: 24px;
+    }
+    .main-page-card-actions {
+      display: flex;
+      justify-content: space-between;
+      width: 225px;
+    }
+  }
+}
