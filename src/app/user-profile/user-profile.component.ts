@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit {
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    public router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -73,9 +73,9 @@ export class UserProfileComponent implements OnInit {
         this.snackBar.open(`${this.user.Usermame} has been removed`, 'OK', {
           duration: 2000
         });
-        // delete everything from local storage
-        localStorage.clear();
       });
+      // delete everything from local storage
+      localStorage.clear();
       // navigate back to welcome screen after account has been deleted
       this.router.navigate(['welcome']);
     }
