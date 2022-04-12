@@ -1,0 +1,17 @@
+.user-register-card {
+  width: 300px;
+  margin: 1.5rem;
+  .user-register-card-title {
+    margin-bottom: 1.2rem;
+  }
+  .user-register-card-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+  }
+  .user-register-card-actions {
+    margin: 0;
+    margin-left: 16px;
+    padding: 0;
+  }
+}

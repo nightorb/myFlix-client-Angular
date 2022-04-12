@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 // used to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
@@ -29,7 +30,8 @@ export class UserRegistrationFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router) { }
 
   // called once the component has received all its inputs (it's data-bound properties)
   // from the calling component (the real-life user)
@@ -39,17 +41,25 @@ export class UserRegistrationFormComponent implements OnInit {
   // function that sends form input to the backend
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
-      // logic for successful user registration (to be implemented)
+      let userCredentials = (({ Username, Password }) => ({ Username, Password })) (this.userData);
+      this.fetchApiData.userLogin(userCredentials).subscribe((response) => {
+        // closes the modal on success
+        this.dialogRef.close();
 
-      // closes the modal on success
-      this.dialogRef.close();
-      console.log(response);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('user', response.user.Username);
+
+        this.router.navigate(['movies']);
+      }, (response) => {
+        this.snackBar.open(response, 'OK', {
+          duration: 2000
+        });
+      });
       this.snackBar.open('user registered successfully', 'OK', {
         duration: 2000
       });
-    }, (response) => {
-      console.log(response);
-      this.snackBar.open(response, 'OK', {
+    }, () => {
+      this.snackBar.open('registration failed', 'OK', {
         duration: 2000
       });
     });

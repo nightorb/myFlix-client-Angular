@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+
+<div class="movie-list">
+  <!-- *ngFor directive used to display returned movies where each movie is displayed in its own card -->
+  <mat-card *ngFor="let movie of movies; let i=index;" class="movie-card">
+    <mat-card-header>
+      <mat-card-title class="movie-card-title">
+        {{movie.Title}}
+      </mat-card-title>
+      <mat-card-subtitle>{{movie.ReleaseYear}}</mat-card-subtitle>
+      <button
+        mat-icon-button
+        color="accent"
+        class="fav-button"
+        (click)="toggleFavorite(movie)"
+      >
+        <mat-icon *ngIf="!isFavorited(movie._id)">favorite_border</mat-icon>
+        <mat-icon *ngIf="isFavorited(movie._id)">favorite</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <img
+        src="{{movie.ImagePath}}"
+        alt={{movie.Title}}
+        class="movie-card-image"
+      />
+    </mat-card-content>
+
+    <mat-card-footer style="margin: 0;">
+      <mat-card-actions class="movie-card-actions">
+        <div>
+          <button
+            mat-button
+            color="primary"
+            class="movie-card-btns"
+            (click)="openDirectorDialog(
+              movie.Title,
+              movie.Director.Name,
+              movie.Director.Bio,
+              movie.Director.BirthYear)"
+          >
+            Directed by {{movie.Director.Name}}
+          </button>
+        </div>
+        <div>
+          <button
+            mat-button
+            color="primary"
+            class="movie-card-btns"
+            (click)="openGenreDialog(
+              movie.Title,
+              movie.Genre.Name,
+              movie.Genre.Description)"
+          >
+            Genre: {{movie.Genre.Name}}
+          </button>
+        </div>
+        <div>
+          <button
+            mat-button
+            color="primary"
+            class="movie-card-btns"
+            (click)="openSynopsisDialog(
+              movie.Title,
+              movie.Description)"
+          >
+            Synopsis
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</div>

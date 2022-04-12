@@ -1,0 +1,79 @@
+$md-screen-size: 728px;
+
+@mixin md-screen {
+  @media only screen and (max-width: $md-screen-size) {
+    @content
+  }
+}
+
+.profile-page {
+  max-width: 1500px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 0 auto;
+  h1 {
+    font-size: 2.25rem;
+    color: #df611c;
+  }
+}
+
+.profile-info,
+.favorites-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
+  @include md-screen {
+    flex-direction: column;
+    align-content: center;
+  }
+  .user-info-card {
+    width: 40vw;
+    min-width: 300px;
+    max-width: 600px;
+    height: fit-content;
+    margin: 1.5rem 1rem 1.5rem 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    @include md-screen {
+      margin: 1.5rem auto;
+    }
+    .user-info-card-title {
+      margin-bottom: 1.2rem;
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    .user-info-card-content {
+      margin-left: 16px;
+    }
+    #value {
+      color: lighten(#00918c, 7%);
+    }
+  }
+  .update-user-card {
+    width: 40vw;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 1.5rem 0 1.5rem 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    @include md-screen {
+      margin: 1.5rem auto;
+    }
+    .update-user-card-title {
+      margin-bottom: 1.2rem;
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+    .update-user-card-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 16px;
+    }
+    .update-user-card-actions {
+      margin: 0 16px;
+      padding: 0;
+    }
+  }
+}
