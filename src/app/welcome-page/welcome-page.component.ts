@@ -1,3 +1,9 @@
+/**
+ * The WelcomePageComponent renders a mat card containing a welcome message and action buttons for registration/login.
+ * Clicking one of those buttons opens a mat dialog containing the component responsible for each process.
+ * @module WelcomePageComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -13,26 +19,41 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 })
 export class WelcomePageComponent implements OnInit {
 
-  // pass Angular Material dialog in the constructor as an argument to make it available for use in the component
+  /**
+   * Passes classes as parameters to the constructor to set them as properties on the component class.
+   * They can be accessed when needed.
+   * @param dialog
+   * @param router
+   */
   constructor(
     public dialog: MatDialog,
     private router: Router) { }
 
+  /**
+   * Calls redirectToMovies method to check whether there's an already logged in user as soon as the component loads
+   */
   ngOnInit(): void {
     this.redirectToMovies();
   }
 
-  // function that opens registration dialog when signup button is clicked
+  /**
+   * Opens dialog containing the user-registration-form component
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent);
   }
 
-  // function that opens login dialog when login button is clicked
+  /**
+   * Opens dialog containing the user-login-form component
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent);
   }
 
-  // if a user is already logged in (= user item in local storage), redirect to movies list instead
+  /**
+   * Redirects user to movies list if the user is already logged in
+   * Checks localstorage for user item
+   */
   redirectToMovies(): void {
     const user = localStorage.getItem('user');
     if (user) {

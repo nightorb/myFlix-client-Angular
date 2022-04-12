@@ -1,3 +1,9 @@
+/**
+ * The UserLoginFormComponent renders a mat dialog containing a form for the user to input and submit their
+ * credentials to log in to myFlix.
+ * @module UserLoginFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,11 +22,24 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class UserLoginFormComponent implements OnInit {
 
+  /**
+   * userData values are populated by form inputs in the user-login-form template that are bound
+   * using the ngModel directive. The userData object will be passed to the API call in the loginUser
+   * function.
+   */
   @Input() userData = {
     Username: '',
     Password: ''
   };
 
+  /**
+   * Passes classes as parameters to the constructor to set them as properties on the component class.
+   * They can be accessed when needed.
+   * @param fetchApiData 
+   * @param dialogRef 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -30,7 +49,10 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // function that sends form input to the backend
+  /**
+   * Invokes userLogin method on the fetchApiData service to login an existing user by sending the userData.
+   * Closes form on successful login, redirecting user to "/movies".
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
       // closes the modal on success

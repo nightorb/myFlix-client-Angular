@@ -1,3 +1,8 @@
+/**
+ * The SynopsisCardComponent renders a mat dialog containing the synopsis of a specific movie.
+ * @module SynopsisCardComponent
+ */
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -9,7 +14,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class SynopsisCardComponent implements OnInit {
 
   constructor(
-    // gets movie details from the movie object
+    /**
+     * Injects data from MovieCardComponent into SynopisCardComponent using the MAT_DIALOG_DATA injection token.
+     * The data becomes a property on the class and is available to be output in the template.
+     */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Title: string,

@@ -1,3 +1,9 @@
+/**
+ * The UserRegistrationFormComponent renders a mat dialog containing a form for the user to input their
+ * information. Creates a new user profile on submit.
+ * @module UserRegistrationFormComponent
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -18,8 +24,11 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  // @Input decorator defines the component's input (here: the user data)
-  // the userData object will be passed into the API call in the registerUser function
+  /**
+   * userData values are populated by form inputs in the user-registration-form template that are bound
+   * using the ngModel directive. The userData object will be passed to the API call in the registerUser
+   * function.
+   */
   @Input() userData = {
     Username: '',
     Password: '',
@@ -27,6 +36,14 @@ export class UserRegistrationFormComponent implements OnInit {
     Birthday: ''
   };
 
+  /**
+   * Passes classes as parameters to the constructor to set them as properties on the component class.
+   * They can be accessed when needed.
+   * @param fetchApiData 
+   * @param dialogRef 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -38,7 +55,10 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // function that sends form input to the backend
+  /**
+   * Invokes userRegistration method on the fetchApiData service to register a new user by sending the userData.
+   * Closes form on successful registration and logs user in, redirecting user to "/movies".
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       let userCredentials = (({ Username, Password }) => ({ Username, Password })) (this.userData);

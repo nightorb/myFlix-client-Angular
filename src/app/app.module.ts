@@ -1,3 +1,11 @@
+/**
+ * The AppModules class is used to import and declare all modules and components that will be used in the app.
+ * It's bootstrapped when the module is bootstrapped, and thereby gets access to the module contents. By virtue
+ * of being children of the AppComponent (the root component), all other components get access to exported
+ * declarables of the imported modules in the AppModules, too, as well as to the other child components
+ * @module AppModule
+ */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
