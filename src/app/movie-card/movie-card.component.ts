@@ -30,11 +30,14 @@ export class MovieCardComponent implements OnInit {
   }
 
   getMovies(): void {
-    // fetch movies from FetchApiDataService with getAllMovies()
-    this.fetchApiData.getAllMovies().subscribe((res: any) => {
-      this.movies = res;
-      return this.movies;
-    });
+    const user = localStorage.getItem('user');
+    if (user) {
+      // fetch movies from FetchApiDataService with getAllMovies()
+      this.fetchApiData.getAllMovies().subscribe((res: any) => {
+        this.movies = res;
+        return this.movies;
+      });
+    }
   }
 
   openDirectorDialog(title: string, name: string, bio: string, birth: string): void {
