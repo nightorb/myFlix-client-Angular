@@ -38,7 +38,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getFavoriteMovies();
-    console.log(this.favoriteMovies)
   }
 
   // API call to get user information
@@ -47,7 +46,6 @@ export class UserProfileComponent implements OnInit {
     if (username) {
       this.fetchApiData.getUser().subscribe((res: any) => {
         this.user = res;
-        console.log(res)
         return this.user;
       });
     }
@@ -57,7 +55,6 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.updateUserInfo(this.userData).subscribe((response) => {
       // save new username to local storage
       localStorage.setItem('user', response.Username);
-      console.log(response);
       this.snackBar.open('profile updated successfully', 'OK', {
         duration: 2000
       });
@@ -84,11 +81,8 @@ export class UserProfileComponent implements OnInit {
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((res: any) => {
       this.favoriteMovies = res.FavoriteMovies;
-      console.log(res.FavoriteMovies);
-      console.log(this.favoriteMovies)
       return this.favoriteMovies;
     });
-    console.log(this.favoriteMovies)
   }
 
   removeFavoriteMovie(MovieID: string, Title: string): void {
