@@ -34,14 +34,14 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Redirects user to movies page
+   * Redirects user to movies page.
    */
   goToMovies(): void {
     this.router.navigate(['movies']);
   }
 
   /**
-   * Redirects users to profile page
+   * Redirects users to profile page.
    */
   goToUserProfile(): void {
     this.router.navigate(['profile']);

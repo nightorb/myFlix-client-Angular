@@ -40,7 +40,7 @@ export class MovieCardComponent implements OnInit {
     public dialog: MatDialog) { }
 
   /**
-   * Calls getMovies and getUser method to populate the template as soon as the component loads
+   * Calls getMovies and getUser method to populate the template as soon as the component loads.
    */
   ngOnInit(): void {
     this.getMovies();
@@ -48,7 +48,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-   * Invokes getAllMovies method on the fetchApiData service and populates the movies array with the response
+   * Invokes getAllMovies method on the fetchApiData service and populates the movies array with the response.
    * @returns - JSON array holding all movie objects
    */
   getMovies(): void {
@@ -114,7 +114,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
-   * Invokes getUser method on the fetchApiData service and populates the user object with the response
+   * Invokes getUser method on the fetchApiData service and populates the user object with the response.
    * @returns - object with user data
    */
   getUser(): void {

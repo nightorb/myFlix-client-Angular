@@ -56,7 +56,7 @@ export class UserProfileComponent implements OnInit {
     private router: Router) { }
 
   /**
-   * Calls getUser and getFavoriteMovies method to populate the template as soon as the component loads
+   * Calls getUser and getFavoriteMovies method to populate the template as soon as the component loads.
    */
   ngOnInit(): void {
     this.getUser();
@@ -64,7 +64,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   /**
-   * Invokes getUser method on the fetchApiData service and populates the user object with the response
+   * Invokes getUser method on the fetchApiData service and populates the user object with the response.
    * @returns - object with user data
    */
   getUser(): void {
@@ -79,7 +79,7 @@ export class UserProfileComponent implements OnInit {
 
   /**
    * Takes userData from the form and invokes updateUserInfo methon on the fetchApiData service to update user object.
-   * Updates user object and user item in localstorage
+   * Updates user object and user item in localstorage.
    * @returns - object with updated user data
    */
   updateUserInfo(): void {

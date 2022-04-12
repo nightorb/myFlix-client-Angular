@@ -30,13 +30,13 @@ export class FetchApiDataService {
 
   /**
    * Injects HttpClient module to the constructor params which provides HttpClient to the entire class,
-   * making it available via this.http
+   * making it available via this.http.
    * @param http
    */
   constructor(private http: HttpClient) { }
 
   /**
-   * Sends POST request to users endpoint to register a new user (POST /users)
+   * Sends POST request to users endpoint to register a new user (POST /users).
    * @param userDetails - object containing the user's data (username, password, email, birthday)
    * @returns - JSON object with the user's details
    */
@@ -46,7 +46,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends POST request to user login endpoint to login an existing user (POST /login)
+   * Sends POST request to user login endpoint to login an existing user (POST /login).
    * @param userDetails - object containing the user's credentials (username, password)
    * @returns - JSON object with user's details
    */
@@ -56,7 +56,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to movies endpoint to get a list of all movies (GET /movies)
+   * Sends GET request to movies endpoint to get a list of all movies (GET /movies).
    * @returns - JSON array holding all movie objects
    */
   getAllMovies(): Observable<any> {
@@ -71,7 +71,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to movies/:Title endpoint to get a single movie by title (GET /movies/:Title)
+   * Sends GET request to movies/:Title endpoint to get a single movie by title (GET /movies/:Title).
    * @returns - JSON object with a single movie's data
    */
   getMovie(): Observable<any> {
@@ -86,7 +86,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to genres endpoint to get a list of all genres (GET /genres)
+   * Sends GET request to genres endpoint to get a list of all genres (GET /genres).
    * @returns - JSON array holding all genre objects
    */
   getAllGenres(): Observable<any> {
@@ -101,7 +101,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to genres/:Name endpoint to get a single genre by name (GET /genres/:Name)
+   * Sends GET request to genres/:Name endpoint to get a single genre by name (GET /genres/:Name).
    * @returns - JSON object with a single genre's data
    */
   getGenre(): Observable<any> {
@@ -116,7 +116,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to directors endpoint to get a list of all directors (GET /directors)
+   * Sends GET request to directors endpoint to get a list of all directors (GET /directors).
    * @returns - JSON array holding all director objects
    */
   getAllDirectors(): Observable<any> {
@@ -131,7 +131,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to directors/:Name endpoint to get a single director by name (GET /directors/:Name)
+   * Sends GET request to directors/:Name endpoint to get a single director by name (GET /directors/:Name).
    * @returns - JSON object with a single director's data
    */
   getDirector(): Observable<any> {
@@ -146,7 +146,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to actors endpoint to get a list of all actors (GET /actors)
+   * Sends GET request to actors endpoint to get a list of all actors (GET /actors).
    * @returns - JSON array holding all actor objects
    */
   getAllActors(): Observable<any> {
@@ -161,7 +161,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to actors/:Name endpoint to get a single actor by name (GET /actors/:Name)
+   * Sends GET request to actors/:Name endpoint to get a single actor by name (GET /actors/:Name).
    * @returns - JSON object with a single actor's data
    */
   getActor(): Observable<any> {
@@ -176,9 +176,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to users/:Username endpoint to get a user by username (GET /users/:Username)
+   * Sends GET request to users/:Username endpoint to get a user by username (GET /users/:Username).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @returns - JSON object with user information
    */
   getUser(): Observable<any> {
@@ -193,9 +193,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends PUT request to users/:Username endpoint to update a user's information (PUT /users/:Username)
+   * Sends PUT request to users/:Username endpoint to update a user's information (PUT /users/:Username).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @param userData - object containing newly updated user details
    * @returns - JSON object with updated user information
    */
@@ -211,9 +211,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends DELETE request to users/:Username endpoint to delete a user (DELETE /users/:Username)
+   * Sends DELETE request to users/:Username endpoint to delete a user (DELETE /users/:Username).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @returns - text response (confirmation)
    */
   deleteUser(): Observable<any> {
@@ -228,9 +228,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends GET request to users/:Username/favorites endpoint to get a user by username (GET /users/:Username/favorites)
+   * Sends GET request to users/:Username/favorites endpoint to get a user by username (GET /users/:Username/favorites).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @returns - JSON array holding all favorite movies objects
    */
   getFavoriteMovies(): Observable<any> {
@@ -245,9 +245,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends POST request to users/:Username/favorites/:id endpoint to add a movie to a user's list of favorite movies (POST /users/:Username/favorites/:id)
+   * Sends POST request to users/:Username/favorites/:id endpoint to add a movie to a user's list of favorite movies (POST /users/:Username/favorites/:id).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @param id - a movie's _id
    * @returns - updated JSON array holding all favorite movies objects
    */
@@ -263,9 +263,9 @@ export class FetchApiDataService {
   }
 
   /**
-   * Sends DELETE request to users/:Username/favorites/:id endpoint to remove a movie from a user's list of favorite movies (POST /users/:Username/favorites/:id)
+   * Sends DELETE request to users/:Username/favorites/:id endpoint to remove a movie from a user's list of favorite movies (POST /users/:Username/favorites/:id).
    * Username retrieved from localstorage.
-   * User authentication required (bearer token retrieved from localstorage)
+   * User authentication required (bearer token retrieved from localstorage).
    * @param id - a movie's _id
    * @returns - updated JSON array holding all favorite movies objects
    */
@@ -281,7 +281,7 @@ export class FetchApiDataService {
     }
 
   /**
-   * Takes a request response and returns either response body or an empty object
+   * Takes a request response and returns either response body or an empty object.
    * @param res - the response to an HTTP request
    * @returns - the response or an empty object
    */
@@ -291,7 +291,7 @@ export class FetchApiDataService {
   }
 
   /**
-   * Handles error responses to HTTP requests
+   * Handles error responses to HTTP requests.
    * @param error - the HttpErrorResponse
    * @returns - error messages
    */

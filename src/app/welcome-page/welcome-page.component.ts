@@ -30,29 +30,29 @@ export class WelcomePageComponent implements OnInit {
     private router: Router) { }
 
   /**
-   * Calls redirectToMovies method to check whether there's an already logged in user as soon as the component loads
+   * Calls redirectToMovies method to check whether there's an already logged in user as soon as the component loads.
    */
   ngOnInit(): void {
     this.redirectToMovies();
   }
 
   /**
-   * Opens dialog containing the user-registration-form component
+   * Opens dialog containing the user-registration-form component.
    */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent);
   }
 
   /**
-   * Opens dialog containing the user-login-form component
+   * Opens dialog containing the user-login-form component.
    */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent);
   }
 
   /**
-   * Redirects user to movies list if the user is already logged in
-   * Checks localstorage for user item
+   * Redirects user to movies list if the user is already logged in.
+   * Checks localstorage for user item.
    */
   redirectToMovies(): void {
     const user = localStorage.getItem('user');
