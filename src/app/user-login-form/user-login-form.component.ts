@@ -44,7 +44,7 @@ export class UserLoginFormComponent implements OnInit {
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
-    private router: Router) { }
+    public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -62,10 +62,10 @@ export class UserLoginFormComponent implements OnInit {
       localStorage.setItem('token', response.token);
       localStorage.setItem('user', response.user.Username);
 
-      this.router.navigate(['movies']);
       this.snackBar.open('logged in successfully', 'OK', {
         duration: 2000
       });
+      this.router.navigate(['movies']);
     }, (response) => {
       this.snackBar.open('wrong username or password', 'OK', {
         duration: 2000
